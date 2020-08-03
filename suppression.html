@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8" />
+    <link type="text/css" rel="stylesheet" href="css/styles.css" />
+    <script src="js/scripts.js"></script>
+    <title>ORINOCO - Suppression</title>
+</head>
+<body>
+<script>
+    //récupération de l'id a supprimer
+    let str = window.location.href;
+    let url = new URL(str);
+    let id = url.searchParams.get("id");
+    supprimer(id);
+
+    function supprimer(id) { 
+    let data = JSON.parse(sessionStorage.getItem("panier")); 
+        data.splice(id, 1);
+        sessionStorage.setItem("panier", JSON.stringify(data)); 
+        window.location.href = "panier.html"; 
+}
+</script>
+</body><html>

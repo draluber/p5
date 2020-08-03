@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8" />
+    <link type="text/css" rel="stylesheet" href="css/styles.css" />
+    <link type="text/css" rel="stylesheet" href="css/tableau.css" />
+   <script src="js/tableau.js"></script>
+    <script src="js/scripts.js"></script>
+    <title>ORINOCO - Confirmation</title>
+</head>
+<body>
+    <header>
+        <div class="logo"><a href="index.html">
+            <img src="images/logoOrinoco.png"/></a>
+        </div> 
+    </header>
+    <div class="conf">
+       <h1>confirmation de commande :</h1>
+          <p>Merci pour votre commande</p>
+          <p>Montant total : <span id="total"></span></p>
+          <p>Votre identifiant de commande : <span id="identifiant"></span></p>
+    </div>
+<script> 
+  orderid();
+  totalpanier();
+  var attente;
+  function attendre(){
+    attente = setTimeout(order, 1000);
+  }
+  attendre();
+  sessionStorage.clear();
+</script>
+</body>
+</html>

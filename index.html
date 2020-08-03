@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8" />
+    <link type="text/css" rel="stylesheet" href="css/styles.css" />
+    <script src="js/scripts.js"></script>
+    <title>ORINOCO - Accueil Catalogue</title>
+</head>
+<body>
+    <header>
+      <div class="logo"><img src="images/logoOrinoco.png"></div>
+      <!--affichage du panier et de sa composition-->
+      <a href="panier.html">
+        <div class="panier"><img class="imagepanier" src="images/panier.png"/>
+           <div id="panier"></div>
+           <div id="prixpanier"></div>
+        </div>
+      </a>
+    </header>
+    <h1>CAMERAS VINTAGES</h1>
+    <section id="liste">
+    </section>  
+<script>
+initialise();//affichage panier vide à à euros
+nbproduit();//affichage nombre de produits avec ou sans s
+prixtotalpanier();//affichage prix total du panier
+let section = document.querySelector('section');
+//recuperation de la liste des cameras et formatage de cette liste
+fetch("http://localhost:3000/api/cameras")
+      .then(function(response){
+             if(response.ok){
+                 response.json()
+                 .then(function (json){                                    
+                     for (i in json) {
+                       let article = document.createElement('article');
+                       article.className ="conteneur";
+                       section.appendChild(article);
+
+                       let details = document.createElement('div');
+                       details.className ="details";
+                       article.appendChild(details);
+
+                       let H2 = document.createElement('h2');
+                       details.appendChild(H2);
+                       H2.textContent = json[i].name;
+
+                       let description= document.createElement('p');
+                       description.className ="description";
+                       details.appendChild(description);
+                       description.textContent = 'description : ' + json[i].description;
+
+                       let control = document.createElement('div');
+                       control.className ="control";
+                       details.appendChild(control);
+
+                       let bouton = document.createElement('button');
+                       bouton.className ="bouton";
+                       control.appendChild(bouton);
+
+                       let prix = document.createElement('span');
+                       prix.className ="prix";
+                       bouton.appendChild(prix);
+                       prix.textContent = 'prix : ' + (json[i].price/100) + ' €';
+
+                       let renvoi= document.createElement('a');
+                       renvoi.setAttribute("href",'produit.html?id=' + json[i]._id);
+                       bouton.appendChild(renvoi);
+
+                       let acheter = document.createElement('span');
+                       acheter.className ="acheter";
+                       renvoi.appendChild(acheter);
+                       acheter.textContent = 'ACHETER'; 
+
+                       let imageproduit = document.createElement('div');
+                       imageproduit.className ="imageproduit";
+                       article.appendChild(imageproduit);
+
+
+                       let image = document.createElement('img');
+                       image.setAttribute("src",json[i].imageUrl);
+                       image.setAttribute("alt","image appareil photo");
+                       imageproduit.appendChild(image);
+                       image.textContent = json[i].imageUrl;
+                      }
+                                      })
+                   }; 
+       });
+</script>
+</body>
+<footer>
+    REBULARD Olivier - Projet 5 
+</footer>
+</html>
