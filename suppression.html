@@ -15,7 +15,7 @@
     supprimer(id);
 
     function supprimer(id) { 
-    let data = JSON.parse(sessionStorage.getItem("panier")); 
+        let data = JSON.parse(sessionStorage.getItem("panier")); 
         data.splice(id, 1);
         sessionStorage.setItem("panier", JSON.stringify(data)); 
         window.location.href = "panier.html"; 
