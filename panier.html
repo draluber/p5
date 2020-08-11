@@ -40,6 +40,7 @@
     </section>
     <br/>
     <!--formulaire de données personnelles-->
+    <div id="formulaire">
      <div class="renseignements">Veuillez renseigner vos informations personnelles pour valider votre commande :</div>
     <br/>
      <form name="formulaire" action=""  method="post">
@@ -82,7 +83,7 @@
             <button type="submit" id="envoyer">Envoyer</button>
         </div>
     </form>
-
+    </div>
     <script>
         //creation des lignes du tableau du panier
         let panier = JSON.parse(sessionStorage.getItem("panier"));
@@ -97,7 +98,13 @@
                     addrow(tbl, nom, quantite, prix, option, total, x)                          
             }
             totalpanier();
-            
+            cacher();
+  
+    el= document.getElementById("supprimer");
+        el.addEventListener("click", function(){
+           xx = el.className;
+            supprimer(xx);
+        });
     </script>
     <script src="js/order.js"></script>
 </body>

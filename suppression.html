@@ -9,16 +9,11 @@
 <body>
 <script>
     //récupération de l'id a supprimer
-    let str = window.location.href;
-    let url = new URL(str);
-    let id = url.searchParams.get("id");
-    supprimer(id);
+    //let str = window.location.href;
+   // let url = new URL(str);
+    //let id = url.searchParams.get("id");
+   // supprimer(id);
 
-    function supprimer(id) { 
-        let data = JSON.parse(sessionStorage.getItem("panier")); 
-        data.splice(id, 1);
-        sessionStorage.setItem("panier", JSON.stringify(data)); 
-        window.location.href = "panier.html"; 
-}
+
 </script>
 </body><html>

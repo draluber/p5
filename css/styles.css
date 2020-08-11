@@ -172,4 +172,7 @@ article{
         text-align: center;
         font-size: 30px;
     }
+.cache{
+    display: none;
+}
     

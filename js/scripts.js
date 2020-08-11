@@ -50,3 +50,11 @@ function order (){
     let ord = JSON.parse(sessionStorage.getItem("orderid")); 
     document.getElementById("identifiant").innerHTML = ord;
 }
+
+function cacher(){
+    if ((sessionStorage.getItem("panier") === null) || (sessionStorage.getItem("panier") === "[]")) {
+        ele= document.getElementById("formulaire");
+        ele.classList.add("cache");
+    }
+    
+}
