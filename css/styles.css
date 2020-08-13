@@ -176,7 +176,7 @@ article{
     display: none;
 }
 footer{
-    background:#ccc;
+    background:rgb(172, 190, 204);
     position:fixed;
     bottom:0;
     width:100%;
