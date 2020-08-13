@@ -4,8 +4,7 @@
     <meta charset="utf-8" />
     <link type="text/css" rel="stylesheet" href="css/styles.css" />
     <link type="text/css" rel="stylesheet" href="css/tableau.css" />
-   <script src="js/tableau.js"></script>
-    <script src="js/scripts.js"></script>
+    <script src="js/panier.js"></script>
     <title>ORINOCO - Panier</title>
 </head>
 <body>
@@ -85,27 +84,8 @@
     </form>
     </div>
     <script>
-        //creation des lignes du tableau du panier
-        let panier = JSON.parse(sessionStorage.getItem("panier"));
-                for (let x in panier) {
-                    let id= panier[x].id;
-                    let nom = panier[x].nom ;
-                    let quantite = panier[x].quantite;
-                    let option = panier[x].option ;
-                    let prix = panier[x].prix/100 ;
-                    let total= (panier[x].prix*panier[x].quantite)/100; 
-                    tbl = document.getElementById('tbody');
-                    addrow(tbl, nom, quantite, prix, option, total, x)                          
-            }
-            totalpanier();
-            cacher();
-  
-    el= document.getElementById("supprimer");
-        el.addEventListener("click", function(){
-           xx = el.className;
-            supprimer(xx);
-        });
+    creationTableau();
+    order()
     </script>
-    <script src="js/order.js"></script>
 </body>
 </html>
